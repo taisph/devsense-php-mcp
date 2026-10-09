@@ -132,8 +132,10 @@ export class LanguageClient {
         let args: string[] = [
             //'-composerNodes', composerNodes?.toString() ?? DefaultComposerNodes, // enable/disable(default) lazy caching of packages in vendor
             '-mcp',
-            '-mcp-server-port', port?.toString() ?? DefaultMcpServerPort.toString(),
         ]
+        if (port !== undefined && port !== null && port > 0) {
+            args.push('-mcp-server-port', port.toString())
+        }
         // if (typeof parallelism == 'number' && parallelism > 0) {
         //     args.push('--parallelism', parallelism.toString())
         // }
@@ -195,7 +197,7 @@ export class LanguageClient {
                 0: {}, // license
                 'clientFeatures': [LSP.devsenseLoadStatus.method],
                 'files.associations': { '*.php': 'php' },
-                'files.exclude': Object.assign({}, (exclude ?? []).map(e => ({ [e]: true }))), // { 'glob': true }
+                'files.exclude': Object.assign({}, ...(exclude ?? []).map(e => ({ [e]: true }))), // { 'glob': true }
                 'files.insertFinalNewline': true,
                 'files.eol': '\n',
                 'search.exclude': {},
