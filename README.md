@@ -30,3 +30,7 @@ Options:
 
 The tool uses [PHP Tools](https://www.devsense.com/)' language server which provides MCP Server functionality.
 
+## More details
+
+- [MCP Tools List](https://docs.devsense.com/other/mcp/mcptools-list/)
+- [Overview](https://docs.devsense.com/other/mcp/)
